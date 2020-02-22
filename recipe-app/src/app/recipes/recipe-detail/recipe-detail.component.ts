@@ -25,6 +25,7 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate(["edit"], { relativeTo: this.route });
   }
   ngOnInit() {
+    console.log(this.route);
     this.route.params.subscribe((params: Params) => {
       this.id = +params["id"];
       this.selectedRecipe = this.recipeService.getRecipeById(this.id);
