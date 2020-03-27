@@ -9,12 +9,37 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
+<<<<<<< HEAD
     "directive-selector": [true, "attribute", "app", "camelCase"],
     "component-selector": [true, "element", "app", "kebab-case"],
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [false],
+=======
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
+    ],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
+    "interface-name": false,
+    "max-classes-per-file": false,
+    "max-line-length": [
+      true,
+      140
+    ],
+>>>>>>> 8b5299f891694fd4be73368ae39f7127567574a0
     "member-access": false,
     "member-ordering": [
       true,
@@ -28,17 +53,46 @@
       }
     ],
     "no-consecutive-blank-lines": false,
+<<<<<<< HEAD
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
     "no-inferrable-types": [true, "ignore-params"],
+=======
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-empty": false,
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
+>>>>>>> 8b5299f891694fd4be73368ae39f7127567574a0
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
+<<<<<<< HEAD
     "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [false],
+=======
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "quotemark": [
+      true,
+      "single"
+    ],
+>>>>>>> 8b5299f891694fd4be73368ae39f7127567574a0
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
@@ -53,5 +107,12 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true
   },
+<<<<<<< HEAD
   "rulesDirectory": ["codelyzer"]
 }
+=======
+  "rulesDirectory": [
+    "codelyzer"
+  ]
+}
+>>>>>>> 8b5299f891694fd4be73368ae39f7127567574a0
