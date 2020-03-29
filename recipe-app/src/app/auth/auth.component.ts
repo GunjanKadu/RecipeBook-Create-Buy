@@ -27,7 +27,6 @@ export class AuthComponent implements OnInit {
     }
     if (this.isLoginMode) {
       this.isLoading = true;
-
       authObs = this.authService.login(email, password);
     } else {
       this.isLoading = true;
@@ -35,16 +34,11 @@ export class AuthComponent implements OnInit {
     }
     authObs.subscribe(
       resData => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1500);
-
+        this.isLoading = false;
         console.log(resData);
       },
       errorMessage => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1500);
+        this.isLoading = false;
         this.error = errorMessage;
         console.log(errorMessage);
       }

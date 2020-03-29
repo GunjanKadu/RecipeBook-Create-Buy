@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { API_KEY } from "../Firebase";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
@@ -28,29 +28,37 @@ export class AuthService {
           returnSecureToken: true
         }
       )
-      .pipe(
-        catchError(errorRes => {
-          let errorMessage = "An Unknown Error Occured";
-          if (!errorRes.error || !errorRes.error.error) {
-            return throwError(errorMessage);
-          }
-          switch (errorRes.error.error.message) {
-            case "EMAIL_EXISTS":
-              errorMessage = "This Email Already Exists Please Try To Login";
-          }
-          return throwError(errorMessage);
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" +
-        API_KEY,
-      {
-        email: email,
-        password: password,
-        returnSecureToken: true
-      }
-    );
+    return this.http
+      .post<AuthResponseData>(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+          API_KEY,
+        {
+          email: email,
+          password: password,
+          returnSecureToken: true
+        }
+      )
+      .pipe(catchError(this.handleError));
+  }
+  private handleError(errorRes: HttpErrorResponse) {
+    let errorMessage = "An Unknown Error Occured";
+    if (!errorRes.error || !errorRes.error.error) {
+      return throwError(errorMessage);
+    }
+    switch (errorRes.error.error.message) {
+      case "EMAIL_EXISTS":
+        errorMessage = "This Email Already Exists Please Try To Login";
+        break;
+      case "EMAIL_NOT_FOUND":
+        errorMessage = "This Email does not exists";
+        break;
+      case "INVALID_PASSWORD":
+        errorMessage = "This Password is not correct";
+        break;
+    }
+    return throwError(errorMessage);
   }
 }
