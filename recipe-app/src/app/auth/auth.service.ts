@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { API_KEY } from "../Firebase";
 import { catchError, tap } from "rxjs/operators";
-import { throwError, Subject } from "rxjs";
+import { throwError, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
 
 export interface AuthResponseData {
@@ -19,7 +19,8 @@ export interface AuthResponseData {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
+
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
