@@ -9,6 +9,8 @@ import { AuthService } from "./auth.service";
 })
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
+  isLoading: boolean = false;
+  error: string = null;
 
   constructor(private authService: AuthService) {}
   onSwitchMode() {
@@ -22,11 +24,20 @@ export class AuthComponent implements OnInit {
     } else {
       const email = form.value.email;
       const password = form.value.password;
+      this.isLoading = true;
       this.authService.signup(email, password).subscribe(
         resData => {
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1500);
+
           console.log(resData);
         },
         error => {
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 1500);
+          this.error = "An Error Occured";
           console.log(error);
         }
       );
