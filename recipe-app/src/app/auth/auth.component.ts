@@ -33,12 +33,12 @@ export class AuthComponent implements OnInit {
 
           console.log(resData);
         },
-        error => {
+        errorMessage => {
           setTimeout(() => {
             this.isLoading = false;
           }, 1500);
-          this.error = "An Error Occured";
-          console.log(error);
+          this.error = errorMessage;
+          console.log(errorMessage);
         }
       );
     }
