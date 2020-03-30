@@ -22,7 +22,6 @@ import { RecipesModule } from "./recipes/recipe.module";
   declarations: [
     AppComponent,
     HeaderComponent,
-
     ShoppingListComponent,
     ShoppingEditComponent,
     AppDropDownDirective,
