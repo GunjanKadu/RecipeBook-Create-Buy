@@ -4,6 +4,7 @@ import { API_KEY } from "../Firebase";
 import { catchError, tap } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
 import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 export interface AuthResponseData {
   kind: string;
@@ -17,7 +18,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   user = new BehaviorSubject<User>(null);
 
@@ -66,6 +67,10 @@ export class AuthService {
           );
         })
       );
+  }
+  logout() {
+    this.user.next(null);
+    this.router.navigate(["/auth"]);
   }
   private handleAuthentication(
     email: string,
