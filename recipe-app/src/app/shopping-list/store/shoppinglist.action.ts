@@ -6,4 +6,8 @@ export const ADD_INGREDIENTS = "ADD_INGREDIENTS";
 export class AddIngredients implements Action {
   readonly type = ADD_INGREDIENTS;
   payload: Ingredient;
+
+  constructor(payload: Ingredient) {
+    this.payload = payload;
+  }
 }
