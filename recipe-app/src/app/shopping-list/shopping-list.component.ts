@@ -4,6 +4,7 @@ import { ShoppingListService } from "./shoppinglist.service";
 import { Subscription, Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as fromShoppingList from "./store/shopping-list.reducer";
+import * as ShoppingListAction from "./store/shoppinglist.action";
 
 @Component({
   selector: "app-shopping-list",
@@ -36,6 +37,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     // this.igChangedSub.unsubscribe();
   }
   onEditItem(index: number) {
-    this.shoppingService.startedEditing.next(index);
+    // this.shoppingService.startedEditing.next(index);
+    this.store.dispatch(new ShoppingListAction.StartEdit(index));
   }
 }
