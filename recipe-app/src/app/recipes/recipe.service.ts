@@ -5,26 +5,13 @@ import { Ingredient } from "../shared/ingredients.model";
 import { Subject } from "rxjs";
 import { Store } from "@ngrx/store";
 import * as ShoppingListAction from "../shopping-list/store/shoppinglist.action";
-import * as fromShoppingList from "../shopping-list/store/shopping-list.reducer";
+import * as fromApp from "../store/app.reducer";
 
 @Injectable()
 export class RecipeService {
-  constructor(private store: Store<fromShoppingList.AppState>) {}
+  constructor(private store: Store<fromApp.AppState>) {}
   recipesChanged = new Subject<Recipe[]>();
-  // private recipes: Recipe[] = [
-  //   new Recipe(
-  //     "Tasty Schnitzel",
-  //     "Simply a test",
-  //     "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/healthy-dinner-ideas-tofu-bowl-1574613204.jpg?crop=0.811xw:0.541xh;0.0737xw,0.247xh&resize=640:*",
-  //     [new Ingredient("Meat", 1), new Ingredient("French Fries", 1)]
-  //   ),
-  //   new Recipe(
-  //     "Big Fat Burger",
-  //     "Simply a test 1 ",
-  //     "https://www.diabetes.org/sites/default/files/styles/crop_large/public/2019-06/Healthy%20Food%20Made%20Easy%20-min.jpg",
-  //     [new Ingredient("Wurst", 1), new Ingredient("Cheese Breads", 1)]
-  //   )
-  // ];
+
   private recipes: Recipe[] = [];
 
   getRecipes() {
